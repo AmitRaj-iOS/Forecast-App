@@ -11,6 +11,7 @@
 		00D8855A2B4280CB00721E99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D885592B4280CB00721E99 /* ContentView.swift */; };
 		00D8855C2B4280CC00721E99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D8855B2B4280CC00721E99 /* Assets.xcassets */; };
 		00D8855F2B4280CC00721E99 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D8855E2B4280CC00721E99 /* Preview Assets.xcassets */; };
+		00D885682B428D2000721E99 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D885672B428D2000721E99 /* Coordinate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		00D885592B4280CB00721E99 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		00D8855B2B4280CC00721E99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00D8855E2B4280CC00721E99 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		00D885672B428D2000721E99 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				00D885572B4280CB00721E99 /* ForecastApp.swift */,
 				00D885592B4280CB00721E99 /* ContentView.swift */,
+				00D885662B428CDF00721E99 /* Model */,
 				00D8855B2B4280CC00721E99 /* Assets.xcassets */,
 				00D8855D2B4280CC00721E99 /* Preview Content */,
 			);
@@ -65,6 +68,14 @@
 				00D8855E2B4280CC00721E99 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		00D885662B428CDF00721E99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				00D885672B428D2000721E99 /* Coordinate.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				00D8855A2B4280CB00721E99 /* ContentView.swift in Sources */,
 				00D885582B4280CB00721E99 /* ForecastApp.swift in Sources */,
+				00D885682B428D2000721E99 /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
