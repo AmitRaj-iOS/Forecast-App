@@ -16,18 +16,29 @@ struct ContentView: View {
     // MARK: - Body
     var body: some View {
         if weatherVM.isLoading {
-            ProgressView("Loading").font(.largeTitle)
+            ProgressView("Loading").font(.title3)
         } else {
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    SearchView(weatherVM: weatherVM)
-                    CurrentView(weatherVM: weatherVM)
-                    ScrollView(showsIndicators: false) {
-                        DailyView(weatherVM: weatherVM)
-                        HourlyView(weatherVM: weatherVM)
+            NavigationView {
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        // SearchView(weatherVM: weatherVM)
+                        CurrentView(weatherVM: weatherVM)
+                        NavigationLink(destination: OtherLocationDetail()) {
+                            Text("Click Here for More Location")
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(10)
+                            .padding()
+                        }
                         DetailView(weatherVM: weatherVM)
-                    }
-                }.animation(.easeInOut(duration: 1))
+                        ScrollView(showsIndicators: false) {
+                            DailyView(weatherVM: weatherVM)
+                            //HourlyView(weatherVM: weatherVM)
+                            
+                        }
+                    }.animation(.easeInOut(duration: 1))
+                }
             }
         }
     }

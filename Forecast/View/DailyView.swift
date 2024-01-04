@@ -16,11 +16,13 @@ struct DailyView: View {
             VStack(alignment: .leading) {
                 Text("Daily Forecast").bold()
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(daily, id: \.dt) { day in
+                    VStack {
+                        ForEach(daily.prefix(5) , id: \.dt) { day in
                             ZStack {
                                 VStack {
-                                    Text(daily[0].dt == day.dt ? "Today": day.dt.dayDateMonth).font(.title)
+                                    Text(daily[0].dt == day.dt ? "Today": day.dt.dayDateMonth)
+                                        .font(.title)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                                     HStack {
                                         Text("Max \(day.temp.max.roundedString(to: 0))°")
                                         Divider()
@@ -40,6 +42,7 @@ struct DailyView: View {
                                 }.padding()
                             }
                             .background(Color(.red).opacity(0.35))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                             .cornerRadius(12)
                         }
                     }

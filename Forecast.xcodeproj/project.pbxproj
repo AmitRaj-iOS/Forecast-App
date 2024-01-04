@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		008C15462B42E2A6002EFD11 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C15452B42E2A6002EFD11 /* WeatherViewModel.swift */; };
+		00AFCE602B463F90006A54DC /* OtherLocationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AFCE5F2B463F90006A54DC /* OtherLocationDetail.swift */; };
 		00D885582B4280CB00721E99 /* ForecastApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D885572B4280CB00721E99 /* ForecastApp.swift */; };
 		00D8855A2B4280CB00721E99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D885592B4280CB00721E99 /* ContentView.swift */; };
 		00D8855C2B4280CC00721E99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D8855B2B4280CC00721E99 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		008C15452B42E2A6002EFD11 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		00AFCE5F2B463F90006A54DC /* OtherLocationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherLocationDetail.swift; sourceTree = "<group>"; };
 		00D885542B4280CB00721E99 /* Forecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D885572B4280CB00721E99 /* ForecastApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastApp.swift; sourceTree = "<group>"; };
 		00D885592B4280CB00721E99 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				00F210292B44EB0500BC92E2 /* SearchView.swift */,
+				00AFCE5F2B463F90006A54DC /* OtherLocationDetail.swift */,
 				00F2102B2B44EB3100BC92E2 /* CurrentView.swift */,
 				00F2102D2B44EB5E00BC92E2 /* DailyView.swift */,
 				00F2102F2B44EB8C00BC92E2 /* HourlyView.swift */,
@@ -235,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00AFCE602B463F90006A54DC /* OtherLocationDetail.swift in Sources */,
 				00F2102E2B44EB5E00BC92E2 /* DailyView.swift in Sources */,
 				00F2102A2B44EB0500BC92E2 /* SearchView.swift in Sources */,
 				00F210242B44E9EB00BC92E2 /* GlobalExtension.swift in Sources */,
@@ -383,6 +387,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To Fetch temperture ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To Fetch";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -413,6 +418,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To Fetch temperture ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To Fetch";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
