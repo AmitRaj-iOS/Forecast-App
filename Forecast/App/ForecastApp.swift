@@ -22,10 +22,10 @@ struct ForecastApp: App {
         WindowGroup {
             ZStack {
                 // Bottom Most layer bacground color gradient.
-                LinearGradient(gradient: Gradient(colors: [Color("BottomBG"), Color("TopBG")]), startPoint: .topLeading, endPoint: .bottomLeading).ignoresSafeArea()
+                LinearGradient(gradient: Gradient(colors: [Color("AppBlue"), Color("")]), startPoint: .topLeading, endPoint: .bottomLeading).ignoresSafeArea()
                 if weatherVM.isLoading {
                     // Loading indicator when app launches..
-                    ProgressView("Loading").font(.largeTitle)
+                    ProgressView("Loading").font(.title3)
                 } else {
                     if weatherVM.showAlert {
                         ContentView()

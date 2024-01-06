@@ -15,41 +15,52 @@ struct ContentView: View {
     
     // MARK: - Body
     var body: some View {
-        if weatherVM.isLoading {
-            ProgressView("Loading").font(.title3)
-        } else {
-            NavigationView {
-               
-                
-                 
-                    ScrollView(showsIndicators: false) {
+        
+        ZStack{
+            BackgroundView()
+            if weatherVM.isLoading {
+                ProgressView("Loading").font(.title3)
+            } else {
+                NavigationView {
+                    
+                    
+                    
+                  ScrollView(showsIndicators: false) {
                         VStack {
                             // SearchView(weatherVM: weatherVM)
                             CurrentView(weatherVM: weatherVM)
                             NavigationLink(destination: OtherLocationDetail()) {
-                                Text("Click Here for More Location")
-                                    .padding()
-                                    .background(Color.blue)
-                                    .foregroundColor(Color.white)
-                                    .cornerRadius(10)
-                                    .padding(5)
+                                HStack{
+                                    Image(systemName: "location.fill")
+                                    
+                                    Text("Click Here for More Location")
+                                         .foregroundColor(Color.blue)
+                                        .padding(5)
+                                }
+                                .padding(8)
+                                .background(Color("AppBlue"))
+                                .cornerRadius(10)
+                                .onTapGesture {
+                                
+                                }
                             }
                             DetailView(weatherVM: weatherVM)
-                            ScrollView(showsIndicators: false) {
+                          //  ScrollView(showsIndicators: false) {
                                 DailyView(weatherVM: weatherVM)
                                 //HourlyView(weatherVM: weatherVM)
                                 
-                            }
-                        }
+                          //  }
+                      }
                     }
-                
+                    
                     .background(Image("bgPic").resizable().scaledToFill())
-                     
-                                
-                    }
-                    .animation(.easeInOut(duration: 1))
-              
-          
+                    
+                    
+                }
+                .animation(.easeInOut(duration: 1))
+               
+                
+            }
         }
     }
 }

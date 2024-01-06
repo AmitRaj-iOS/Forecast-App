@@ -48,8 +48,12 @@ final class WeatherViewModel: NSObject, ObservableObject {
             CLGeocoder().geocodeAddressString(searchedCityName) { (placemarks, error) in
                 if let location = placemarks?.first?.location {
                     self.performWeatherRequest(with: location)
+                } else {
+                    self.appError = AppError(errorString: "\("Invalid")")
                 }
             }
+        } else {
+           
         }
     }
     
@@ -74,6 +78,7 @@ final class WeatherViewModel: NSObject, ObservableObject {
                 DispatchQueue.main.async {
                     self.isLoading = false
                     self.appError = AppError(errorString: "\(result)")
+                    print(result)
                 }
             }
         }

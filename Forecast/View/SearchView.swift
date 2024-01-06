@@ -20,7 +20,7 @@ struct SearchView: View {
             }
             
             TextField("Search City", text: $weatherVM.searchedCityName, onCommit:  {
-                weatherVM.fetchWeatherByCityName()
+              weatherVM.fetchWeatherByCityName()
             })
             .padding(5)
             .background(Color(.quaternarySystemFill))
@@ -34,5 +34,9 @@ struct SearchView: View {
             }
         }
         .padding(.horizontal)
+        
+        
+        
+        
     }
 }
