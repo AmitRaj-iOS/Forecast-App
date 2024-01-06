@@ -22,8 +22,8 @@ final class WeatherViewModel: NSObject, ObservableObject {
     @Published var timeZoneOffset = 0
     
     @Published var current: WeatherDataModel.Current?
-    @Published var daily: [WeatherDataModel.Daily]?
-    @Published var hourly: [WeatherDataModel.Hourly]?
+    @Published var daily:   [WeatherDataModel.Daily]?
+    @Published var hourly:  [WeatherDataModel.Hourly]?
     
     let apiService = APIService.shared
     let locationManager = CLLocationManager()
@@ -49,7 +49,7 @@ final class WeatherViewModel: NSObject, ObservableObject {
                 if let location = placemarks?.first?.location {
                     self.performWeatherRequest(with: location)
                 } else {
-                    self.appError = AppError(errorString: "\("Invalid")")
+                    self.appError = AppError(errorString: "\("Invalid City details")")
                 }
             }
         } else {
@@ -98,12 +98,12 @@ extension WeatherViewModel: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         requestLocation()
     }
+    
     private func requestLocation() {
-        
         DispatchQueue.global().async {
             guard CLLocationManager.locationServicesEnabled() else { return }
         }
-
+        
         switch locationAuthorizationStatus() {
         case .notDetermined, .authorizedAlways, .authorizedWhenInUse:
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -136,46 +136,3 @@ extension WeatherViewModel: CLLocationManagerDelegate {
     }
 }
 
-
-//class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
-//    private var locationManager = CLLocationManager()
-//    private var cancellables: Set<AnyCancellable> = []
-//
-//    @Published var weather: Weather?
-//
-//    override init() {
-//        super.init()
-//        setupLocationManager()
-//    }
-//
-//    private func setupLocationManager() {
-//        locationManager.delegate = self
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.startUpdatingLocation()
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if let location = locations.last {
-//            fetchWeatherData(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//            locationManager.stopUpdatingLocation()
-//        }
-//    }
-//
-//    private func fetchWeatherData(latitude: Double, longitude: Double) {
-//       // guard let apiKey = Constants.apiKey else { return }
-//
-//     let apiKey = "f2ba36753f590e84769927522580b06b"
-//        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)"
-//
-//        if let url = URL(string: urlString) {
-//            URLSession.shared.dataTaskPublisher(for: url)
-//                .map(\.data)
-//                .decode(type: Weather.self, decoder: JSONDecoder())
-//                .receive(on: DispatchQueue.main)
-//                .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] weather in
-//                    self?.weather = weather
-//                })
-//                .store(in: &cancellables)
-//        }
-//    }
-//}

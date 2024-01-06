@@ -25,32 +25,24 @@ struct ContentView: View {
                     
                     
                     
-                  ScrollView(showsIndicators: false) {
+                    ScrollView(showsIndicators: false) {
                         VStack {
                             // SearchView(weatherVM: weatherVM)
                             CurrentView(weatherVM: weatherVM)
                             NavigationLink(destination: OtherLocationDetail()) {
                                 HStack{
                                     Image(systemName: "location.fill")
-                                    
                                     Text("Click Here for More Location")
-                                         .foregroundColor(Color.blue)
+                                        .foregroundColor(Color.blue)
                                         .padding(5)
                                 }
                                 .padding(8)
                                 .background(Color("AppBlue"))
                                 .cornerRadius(10)
-                                .onTapGesture {
-                                
-                                }
                             }
                             DetailView(weatherVM: weatherVM)
-                          //  ScrollView(showsIndicators: false) {
-                                DailyView(weatherVM: weatherVM)
-                                //HourlyView(weatherVM: weatherVM)
-                                
-                          //  }
-                      }
+                            DailyView(weatherVM: weatherVM)
+                        }
                     }
                     
                     .background(Image("bgPic").resizable().scaledToFill())
@@ -58,7 +50,7 @@ struct ContentView: View {
                     
                 }
                 .animation(.easeInOut(duration: 1))
-               
+                
                 
             }
         }
