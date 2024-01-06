@@ -19,27 +19,37 @@ struct ContentView: View {
             ProgressView("Loading").font(.title3)
         } else {
             NavigationView {
-                ScrollView(showsIndicators: false) {
-                    VStack {
-                        // SearchView(weatherVM: weatherVM)
-                        CurrentView(weatherVM: weatherVM)
-                        NavigationLink(destination: OtherLocationDetail()) {
-                            Text("Click Here for More Location")
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(10)
-                            .padding()
+               
+                
+                 
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            // SearchView(weatherVM: weatherVM)
+                            CurrentView(weatherVM: weatherVM)
+                            NavigationLink(destination: OtherLocationDetail()) {
+                                Text("Click Here for More Location")
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(10)
+                                    .padding(5)
+                            }
+                            DetailView(weatherVM: weatherVM)
+                            ScrollView(showsIndicators: false) {
+                                DailyView(weatherVM: weatherVM)
+                                //HourlyView(weatherVM: weatherVM)
+                                
+                            }
                         }
-                        DetailView(weatherVM: weatherVM)
-                        ScrollView(showsIndicators: false) {
-                            DailyView(weatherVM: weatherVM)
-                            //HourlyView(weatherVM: weatherVM)
-                            
-                        }
-                    }.animation(.easeInOut(duration: 1))
-                }
-            }
+                    }
+                
+                    .background(Image("bgPic").resizable().scaledToFill())
+                     
+                                
+                    }
+                    .animation(.easeInOut(duration: 1))
+              
+          
         }
     }
 }

@@ -93,10 +93,12 @@ extension WeatherViewModel: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         requestLocation()
     }
-    
     private func requestLocation() {
-        guard CLLocationManager.locationServicesEnabled() else { return }
         
+        DispatchQueue.global().async {
+            guard CLLocationManager.locationServicesEnabled() else { return }
+        }
+
         switch locationAuthorizationStatus() {
         case .notDetermined, .authorizedAlways, .authorizedWhenInUse:
             locationManager.desiredAccuracy = kCLLocationAccuracyBest

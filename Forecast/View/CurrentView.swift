@@ -34,20 +34,6 @@ struct CurrentView: View {
                         Divider()
                         Text("Humidity: \(current.humidity)%")
                     }.fixedSize()
-                    
-                 
-//                    Button("Click Here for More Location") {
-//                        // Action to be performed when the button is tapped
-//                        print("Button tapped!")
-//                    }
-//                    .padding()
-//                    .background(Color.blue)
-//                    .foregroundColor(Color.white)
-//                    .cornerRadius(10)
-//                    .padding()
-                    
-                    
-  //              }
             }
         }
     }
