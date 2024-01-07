@@ -36,6 +36,7 @@ struct OtherLocationDetail: View {
                         hideKeyboard()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             isSearchData = true
+                            weatherVM.searchedCityName = ""
                         }
                         
                     } label: {
@@ -44,6 +45,7 @@ struct OtherLocationDetail: View {
                     }
                 }
                 .padding(.horizontal)
+                Spacer()
                 if let errorMessage = weatherVM.appError {
                     VStack{
                         Text("Oops! \(errorMessage.errorString)")
@@ -58,7 +60,7 @@ struct OtherLocationDetail: View {
                         
                     }
                     .padding()
-                    
+                 Spacer()
                 } else {
                     if isSearchData == true {
                         if let current = weatherVM.current {

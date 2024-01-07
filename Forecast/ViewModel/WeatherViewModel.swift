@@ -51,7 +51,7 @@ final class WeatherViewModel: NSObject, ObservableObject {
                 if let location = placemarks?.first?.location {
                     self.performWeatherRequest(with: location)
                 } else {
-                    self.appError = AppError(errorString: "\("Invalid City details")")
+                    self.appError = AppError(errorString: "\("Invalid city details")")
                 }
             }
         }
