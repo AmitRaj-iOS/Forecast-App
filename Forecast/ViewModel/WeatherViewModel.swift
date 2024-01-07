@@ -25,6 +25,8 @@ final class WeatherViewModel: NSObject, ObservableObject {
     @Published var daily:   [WeatherDataModel.Daily]?
     @Published var hourly:  [WeatherDataModel.Hourly]?
     
+  
+    
     let apiService = APIService.shared
     let locationManager = CLLocationManager()
     
@@ -52,13 +54,11 @@ final class WeatherViewModel: NSObject, ObservableObject {
                     self.appError = AppError(errorString: "\("Invalid City details")")
                 }
             }
-        } else {
-           
         }
     }
     
     func performWeatherRequest(with location: CLLocation) {
-        API.checkForAPIKey()
+       API.checkForAPIKey()
         let coordinate = location.coordinate
         let urlString = "https://api.openweathermap.org/data/2.5/onecall?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&exclude=minutely,alerts&appid=\(API.key)&units=metric"
         apiService.getJSON(urlString: urlString) { (result: Result<WeatherDataModel, APIService.APIError>) in
@@ -135,4 +135,6 @@ extension WeatherViewModel: CLLocationManagerDelegate {
         print(error.localizedDescription)
     }
 }
+
+
 
