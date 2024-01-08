@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct BackgroundView: View {
+    // MARK: - Custome Color Class 
     var body: some View {
         let clodyScheme = [Color(red: 41/255, green: 128/255, blue: 184/255),
                            Color(red: 109/255, green: 212/255, blue: 250/255),

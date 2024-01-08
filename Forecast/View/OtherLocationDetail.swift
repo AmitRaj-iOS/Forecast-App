@@ -8,37 +8,36 @@
 import SwiftUI
 
 struct OtherLocationDetail: View {
+    
+    // MARK: - Property
     @StateObject var weatherVM = WeatherViewModel()
     @State var isSearchData = false
+    @State var isshowAlert = false
     
+    // MARK: - Body
     var body: some View {
-        
+
         ZStack{
             BackgroundView()
             VStack{
-                
+                // MARK: - SeacrhView 
                 HStack {
-                    Button {
-                        weatherVM.getWeather()
-                    } label: {
-                        Image(systemName: "location.circle.fill").renderingMode(.original)
-                            .font(.system(size: 24))
-                    }
-                    
                     TextField("Search City", text: $weatherVM.searchedCityName, onCommit:  {
-                        weatherVM.fetchWeatherByCityName()
+                    weatherVM.fetchWeatherByCityName()
                     })
                     .padding(5)
                     .background(Color(.quaternarySystemFill))
                     .cornerRadius(8)
                     Button {
-                        weatherVM.fetchWeatherByCityName()
-                        hideKeyboard()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            isSearchData = true
-                            weatherVM.searchedCityName = ""
+                        if  weatherVM.searchedCityName.isEmpty {
+                        } else {
+                            weatherVM.fetchWeatherByCityName()
+                            hideKeyboard()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.isSearchData = true
+                                weatherVM.searchedCityName = ""
+                            }
                         }
-                        
                     } label: {
                         Image(systemName: "magnifyingglass").renderingMode(.original)
                             .font(.system(size: 24))
@@ -46,23 +45,9 @@ struct OtherLocationDetail: View {
                 }
                 .padding(.horizontal)
                 Spacer()
-                if let errorMessage = weatherVM.appError {
-                    VStack{
-                        Text("Oops! \(errorMessage.errorString)")
-                            .foregroundColor(.gray)
-                            .font(.title2)
-                        
-                        Image(systemName: "sun.max.trianglebadge.exclamationmark.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200,height: 200)
-                            .foregroundColor(.gray)
-                        
-                    }
-                    .padding()
-                 Spacer()
-                } else {
                     if isSearchData == true {
+                        
+                        //MARK: -  Shows the Current Temp
                         if let current = weatherVM.current {
                             VStack(spacing: 2) {
                                 Text(weatherVM.currentCityName)
@@ -89,6 +74,7 @@ struct OtherLocationDetail: View {
                             }
                         }
                         ScrollView(showsIndicators: false) {
+                            //MARK: - Daily Forcast View
                             DailyView(weatherVM: weatherVM)
                         }
                     } else {
@@ -96,10 +82,19 @@ struct OtherLocationDetail: View {
                             .foregroundColor(.black)
                             .font(.largeTitle)
                     }
-                    
-                    Spacer()
-                }
+             
+                Spacer()
             }
+        }
+        
+        //MARK: - Alert will show if there is invalid city
+        .alert(item: $weatherVM.appError) { (appAlert) in
+            Alert(title: Text("Error"), message: Text(
+                    """
+            \(appAlert.errorString)
+            Please try with valid city.
+            """)
+            )
         }
     }
 }

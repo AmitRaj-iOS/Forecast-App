@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct DailyView: View {
+    // MARK: - Property
     @StateObject var weatherVM: WeatherViewModel
-    
+    // MARK: - Body
     var body: some View {
         if let daily = weatherVM.daily {
             VStack(alignment: .leading) {
-                
-                
                 Text("5 - Day Forecast").bold()
                     .padding(.horizontal)
                 VStack {

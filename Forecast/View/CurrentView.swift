@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct CurrentView: View {
+    // MARK: - Property
     @StateObject var weatherVM: WeatherViewModel
-    
+    // MARK: - Body
     var body: some View {
-       
+        // MARK: - Current View 
             if let current = weatherVM.current {
                 VStack(spacing: 2) {
                     Text(weatherVM.currentCityName)

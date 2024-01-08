@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct DetailView: View {
+    // MARK: - Property
     @StateObject var weatherVM: WeatherViewModel
-    
+    // MARK: - Body
     var body: some View {
         if let current = weatherVM.current {
             Divider()
