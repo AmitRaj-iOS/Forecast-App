@@ -28,7 +28,7 @@ struct APIService {
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                completion(.failure(.error("mansaError: \(error.localizedDescription)")))
+                completion(.failure(.error("Error: \(error.localizedDescription)")))
                 return
             }
             guard let data = data else {
@@ -42,7 +42,7 @@ struct APIService {
                 let decodedData = try decoder.decode(T.self, from: data)
                 completion(.success(decodedData))
             } catch let decodingError {
-                completion(.failure(APIError.error("mansaDecodingError: \(decodingError.localizedDescription)")))
+                completion(.failure(APIError.error("DecodingError: \(decodingError.localizedDescription)")))
             }
         }.resume()
     }
