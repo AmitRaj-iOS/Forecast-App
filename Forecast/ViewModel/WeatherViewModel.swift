@@ -23,7 +23,7 @@ final class WeatherViewModel: NSObject, ObservableObject {
     
     @Published var current: WeatherDataModel.Current?
     @Published var daily:   [WeatherDataModel.Daily]?
-    @Published var hourly:  [WeatherDataModel.Hourly]?
+
     
   
     
@@ -58,17 +58,18 @@ final class WeatherViewModel: NSObject, ObservableObject {
     }
     
     func performWeatherRequest(with location: CLLocation) {
-       API.checkForAPIKey()
+    
         let coordinate = location.coordinate
         let urlString = "https://api.openweathermap.org/data/2.5/onecall?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&exclude=minutely,alerts&appid=\(API.key)&units=metric"
         apiService.getJSON(urlString: urlString) { (result: Result<WeatherDataModel, APIService.APIError>) in
             switch result {
             case .success(let result):
+                
+               //MARK: -[weak self] is a capture list used in closures to avoid strong reference cycles, also known as retain cycles. A retain cycle occurs when two or more objects hold strong references to each other, even if they are no longer needed
                 DispatchQueue.main.async { [weak self] in
                     self?.timeZoneOffset = result.timezone_offset
                     self?.current = result.current
                     self?.daily = result.daily
-                    self?.hourly = result.hourly
                     self?.getCityName(of: location)
                     self?.isLoading = false
                     self?.searchedCityName = ""
@@ -111,6 +112,8 @@ extension WeatherViewModel: CLLocationManagerDelegate {
         case .restricted: break
         case .denied: showAlert = true; isLoading = false
         @unknown default: break
+            
+            //MARK: The @unknown attribute in Swift is specifically used with switch statements. Swift is a type-safe language, which means the compiler checks the type of data and ensures it matches the expected type
         }
     }
     

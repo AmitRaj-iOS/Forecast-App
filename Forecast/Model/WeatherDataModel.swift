@@ -8,7 +8,7 @@
 import Foundation
 
 
-
+//MARK: You can use Codable in Swift to encode and decode custom data formats, such as JSON, to native Swift object
 struct WeatherDataModel: Codable {
     let timezone_offset: Int
     let current: Current
